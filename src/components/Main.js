@@ -6,9 +6,9 @@ export default function Main(props) {
   const doneList = props.cards.filter((c) => c.list === "done");
   return (
     <main>
-      <ListContainer cards={todoList} message={props.message} showForm={true} name="Todo" />
-      <ListContainer cards={doingList} message={props.message} name="Doing" />
-      <ListContainer cards={doneList} message={props.message} name="Done" />
+      <ListContainer cardAdded={props.cardAdded} cards={todoList} message={props.message} showForm={true} name="Todo" />
+      <ListContainer cardAdded={props.cardAdded} cards={doingList} message={props.message} name="Doing" />
+      <ListContainer cardAdded={props.cardAdded} cards={doneList} message={props.message} name="Done" />
     </main>
   );
 }

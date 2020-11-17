@@ -1,11 +1,21 @@
 import React, { useState, useEffect } from "react";
 
 import Main from "./components/Main";
-import { _GET } from "./modules/DB";
+import { _GET, _POST } from "./modules/DB";
 import "./App.css";
 
 function App() {
   const [cards, setCards] = useState([]);
+
+  function cardAdded(task) {
+    console.log(task);
+    const payload = {
+      task,
+      list: "todo",
+      highlight: false,
+    };
+    _POST(payload, cards, setCards);
+  }
 
   useEffect(() => {
     _GET(setCards);
@@ -16,7 +26,7 @@ function App() {
       <div className="App">
         <Nav />
 
-        <Main cards={cards} />
+        <Main cardAdded={cardAdded} cards={cards} />
       </div>
     </>
   );

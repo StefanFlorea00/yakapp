@@ -20,3 +20,22 @@ export function _GET(callback) {
       console.log("Request failed", error);
     });
 }
+
+export function _POST(payload, cards, callback) {
+  fetch(endpoint, {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+      "x-apikey": key,
+      "cache-control": "no-cache",
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((e) => e.json())
+    .then((data) => {
+      callback(cards.concat(data));
+    })
+    .catch(function (error) {
+      console.log("Request failed", error);
+    });
+}
